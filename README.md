@@ -34,6 +34,13 @@ The RISC-V has been designed to support extensive customization and specializati
   
 </details>
 
+<details>
+<summary><strong>SoC Design and OpenLane</strong></summary>
+
+Under this section, we will look into the requirements
+  
+</details>
+
 
 ## DAY 2
 ## DAY 3
