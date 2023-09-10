@@ -228,9 +228,35 @@ run_floorplan
 
 ![Screenshot from 2023-09-10 18-27-10](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/6fcde85c-8222-4dd5-8f07-2de8b25b4386)
 
-Post the floorplan run, a .def file will have been created within the ```results/floorplan``` directory. We may review floorplan files by checking the ```floorplan.tcl```. The system defaults will have been overriden by switches set in ```conifg.tcl``` and further overriden by switches set in ```sky130A_sky130_fd_sc_hd_config.tcl```.
+- We may review floorplan files by checking the ```floorplan.tcl```. The system defaults will have been overriden by switches set in ```conifg.tcl``` and further overriden by switches set in ```sky130A_sky130_fd_sc_hd_config.tcl```.
+
+- Post the floorplan run, a .def file will have been created within the ```results/floorplan``` directory. It has the various informations such as the die area and unit lenghts used.
+
+![Screenshot from 2023-09-10 18-27-10](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/17eee48a-b638-4e0b-8132-05eb0ef63bd2)
+
 
 ***View Floorplan on Magic***
+
+To view the floorplan, Magic is invoked after moving to the ```results/floorplan``` directory:
+
+```bash
+ magic -T ~/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32.def &
+```
+
+![Screenshot from 2023-09-10 19-52-24](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/92ba2d51-fa92-4af2-b809-3ba0666873c8)
+
+One can zoom into Magic layout by selecting an area with left and right mouse click followed by pressing "z" key.
+
+Various components can be identified by using the what command in tkcon window after making a selection on the component.
+
+Zooming in also provides a view of decaps present in picorv32a chip.
+
+The standard cell can be found at the bottom left corner.
+
+You can clearly see I/O pins, Decap cells and Tap cells. Tap cells are placed in a zig zag manner or you can say diagonally
+
+![Screenshot from 2023-09-10 19-53-44](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/3c17a30b-4362-4cc7-b9b0-447662ab54c9)
+
 
 </details>
 
