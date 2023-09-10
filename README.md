@@ -161,7 +161,28 @@ run_synthesis
 
 </details>
 
-## DAY 2
-## DAY 3
-## DAY 4
-## DAY 5
+## DAY 2 - Good Floor Plan vs. Bad Floor Plan & Introduction to Library cells
+
+<details>
+<summary><strong>Chip Floor Planning</strong></summary>
+  
+</details>
+
+<details>
+<summary><strong>Library Binding and Placement</strong></summary>
+  
+</details>
+
+<details>
+<summary><strong>Cell Design anf Characterization Flow</strong></summary>
+  
+</details>
+
+<details>
+<summary><strong>General Timing and Characterization Parameters</strong></summary>
+  
+</details>
+
+## DAY 3 - Design Library Cell using Magic Layout and NGspice Characterization
+## DAY 4 - Pre-layout Timing Analysis and Importance of Good Clock Tree
+## DAY 5 - Final Step for RTL2GDS using tritonRoute and OpenSTA
