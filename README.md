@@ -264,7 +264,35 @@ You can clearly see I/O pins, Decap cells and Tap cells. Tap cells are placed in
 <summary><strong>Library Binding and Placement</strong></summary>
 
 First and foremost, we need to bind the netlist with physical cells. We have shapes for OR, AND and every cell for pratice purpose. But in reality we dont have such shapes, we have give an physical dimensions like rectangles or squares weight and width. This information is given in libs and lefs. Now we place these cells in our design by initilaising it.
-  
+
+Now we look into Placement and its optimisation.
+
+***Optimise Placement***
+
+The next step is placement. Once we initial the design, the logic cells in netlist in its physical dimisoins is placed on the floorplan. Placement is perfomed in 2 stages:
+
+- *Global Placement*: Cells will be placed randomly in optimal positions which may not be legal and cells may overlap. Optimization is done through reduction of half parameter wire length.
+- *Detailed Placement*: It alters the position of cells post global placement so as to legalise them. Legalisation of cells is important from timing point of view.
+
+Optimization is stage where we estimate the lenght and capictance, based on that we add buffers. Ideally, Optimization is done for better timing.
+
+- Run placement on OpenLane
+```bash
+run_placement
+```
+![Screenshot from 2023-09-10 23-42-54](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/0775be8f-5965-4da1-82ad-d9cecbe81af8)
+
+- The objective of placement is the convergence of overflow value. If overflow value progressively reduces during the placement run it implies that the design will converge and placement will be successful. Post placement, the design can be viewed on magic within ***results/placement*** directory:
+
+```bash
+magic -T ~/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32.def &
+```
+![Screenshot from 2023-09-10 23-51-48](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/c93feb35-26c1-4108-b39b-78d1b1fbee7a)
+
+- Zoomed in image.
+![Screenshot from 2023-09-10 23-52-25](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/9f1c190c-fd29-467e-9258-1bb8668744e5)
+
+***Note**: Power distribution network generation is usually a part of the floorplan step. However, in the openLANE flow, floorplan does not generate PDN. The steps are - floorplan, placement CTS and then PDN*
 </details>
 
 <details>
