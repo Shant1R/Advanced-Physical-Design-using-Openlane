@@ -132,7 +132,33 @@ With the release of open-source PDK, the whole open-source ASIC flow and methodo
 <details>
 <summary><strong>Open Source EDA Tools</strong></summary>
 
-  
+- To install and set up the environment for the OpenLane refer to [KanishR1 GitHub](https://github.com/KanishR1/Physical-Design-Using-Openlane)
+
+- Now, we will enter the interactive mode for the workflow.
+```bash
+make mount
+./flow.tcl -interactive
+ ```
+
+- Next we set the required package
+
+```package require openlane 0.9``` 
+
+- Now, to run the synthesis, we will first prep the design and run the synthesis
+
+```bash
+prep -design picorv32a
+run_synthesis
+```
+
+- *NOTE* --> The netlist synthesis will be stopped for this because the netlist file of the given example already exists. To check the results and reports, one can refer the following folders shown below.
+
+![Screenshot from 2023-09-10 15-27-48](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/a7454e45-25fb-4b87-aff7-cabd51b12047)
+
+- The netlist file is under synthesis under the results folder as the verilog file. The various synthesis reports can be refered under the synthesis under reports.
+
+
+
 </details>
 
 ## DAY 2
