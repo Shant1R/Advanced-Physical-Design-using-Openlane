@@ -37,8 +37,40 @@ The RISC-V has been designed to support extensive customization and specializati
 <details>
 <summary><strong>SoC Design and OpenLane</strong></summary>
 
-Under this section, we will look into the requirements
+Under this section, we will look into the requirements and components of open source digital design of SoC - System on Chip for Application specific Integrated circuits.
   
+  ![Screenshot from 2023-09-09 14-20-03](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/705c36e0-b84f-49c8-878a-c7fd8a2494b9)
+
+The necesaary components are Resistor Transistor Logic Intellectual Property (RTL IPs), Electronic Design Automation (EDA) Tools and Process Design Kit (PDK) data, as shown in the image above. Now, we look into the open source tools and platforms that provide us with the various necessary tools. Initials days, most of the tools were under proprietary tools, but with the growth of the community and other benefactors, it became possible for the existance and maintainence of the open-source platforms.  
+
+- *Opensource RTL Designs*: github, librecores, opencores
+- *Opensource EDA tools*: QFlow, OpenROAD, OpenLANE
+- *Opensource PDK data*: Google Skywater130 PDK
+
+![Screenshot from 2023-09-09 14-20-33](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/74d7c9ab-e268-4336-9f83-9316f7d2e8e0)
+
+Now, that we know the tools required, we will look into a simlplied flow from RTL code to GDSII and look into the steps involed in the deisgn.
+  
+![Screenshot from 2023-09-10 11-17-31](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/152f3807-db53-4cd1-9012-8a26b3679b1d)
+
+- *Synthesis*: RTL Converted to gate level netlist using standard cell libraries (SCL). An RTL design is created for a design specification using HDLs like Verilog or VHDL, or it can be created using high-level synthesis tools like SystemC, MATLAB HDL Coder etc.
+
+- *Floor & Power Planning*: Planning of silicon area to ensure robust power distribution and has three stages
+  - *Chip floor planning* : the chip is partitiones between different system building blocks and the IO ports are positioned.
+  - *Macro fLoor planning* : the pin locations, dimensnions and rows are defined. 
+  - *Power Planning* : the power network are connected to reduce the resistance and EM issues.
+
+- *Placement*: Placing cells on floorplan rows aligned with sites
+
+- *Global Placement*: for optimal position of cells
+
+- *Detailed Placement*: for legal positions
+
+- *Routing*: Valid patterns for wires
+
+- *Signoff*: Physical (DRC, LVS) and Timing verifications (STA)
+
+
 </details>
 
 
