@@ -232,7 +232,7 @@ run_floorplan
 
 - Post the floorplan run, a .def file will have been created within the ```results/floorplan``` directory. It has the various informations such as the die area and unit lenghts used.
 
-![Screenshot from 2023-09-10 18-27-10](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/17eee48a-b638-4e0b-8132-05eb0ef63bd2)
+![Screenshot from 2023-09-10 18-54-00](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/906e337b-c9f7-4bb7-a612-a85216314525)
 
 
 ***View Floorplan on Magic***
