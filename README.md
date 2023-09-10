@@ -142,7 +142,9 @@ make mount
 
 - Next we set the required package
 
-```package require openlane 0.9``` 
+```bash
+package require openlane 0.9
+``` 
 
 - Now, to run the synthesis, we will first prep the design and run the synthesis
 
@@ -200,11 +202,42 @@ These two Parameters are important to derive the width and height of the core an
 - The input, output and Clock pins are placed optimally such that there is less complication in routing or optimised delay.
 - Note - CLK needs least resistive path, as they provide signals to all the flops continuously, thus have bigger IO ports.
 - There are different styles of pin placement in openlane like *random pin placement*, *uniformly spaced* etc.,
-  
+
+
+***Run Floorplan on OpenLane***
+
+- Importance files in increasing priority order:
+  - *floorplan.tcl* - System default envrionment variables
+  - *conifg.tcl*
+  - *sky130A_sky130_fd_sc_hd_config.tcl*
+
+- Floorplan envrionment variables or switches:
+  - *FP_CORE_UTIL* - floorplan core utilisation
+  - *FP_ASPECT_RATIO* - floorplan aspect ratio
+  - *FP_CORE_MARGIN* - Core to die margin area
+  - *FP_IO_MODE* - defines pin configurations (1 = equidistant/0 = not equidistant)
+  - *FP_CORE_VMETAL* - vertical metal layer
+  - *FP_CORE_HMETAL* - horizontal metal layer
+
+*Note: Usually, vertical metal layer and horizontal metal layer values will be 1 more than that specified in the files*
+
+Now, we will look into how to generate the floorplan using OpenLane.
+```bash
+run_floorplan
+```
+
+![Screenshot from 2023-09-10 18-27-10](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/6fcde85c-8222-4dd5-8f07-2de8b25b4386)
+
+Post the floorplan run, a .def file will have been created within the ```results/floorplan``` directory. We may review floorplan files by checking the ```floorplan.tcl```. The system defaults will have been overriden by switches set in ```conifg.tcl``` and further overriden by switches set in ```sky130A_sky130_fd_sc_hd_config.tcl```.
+
+***View Floorplan on Magic***
+
 </details>
 
 <details>
 <summary><strong>Library Binding and Placement</strong></summary>
+  
+  
   
 </details>
 
