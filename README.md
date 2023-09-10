@@ -49,9 +49,11 @@ The necesaary components are Resistor Transistor Logic Intellectual Property (RT
 
 ![Screenshot from 2023-09-09 14-20-33](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/74d7c9ab-e268-4336-9f83-9316f7d2e8e0)
 
-Now, that we know the tools required, we will look into a simlplied flow from RTL code to GDSII and look into the steps involed in the deisgn.
+Now, that we know the tools required, we will look into a ***simlplied flow from RTL code to GDSII*** and look into the steps involed in the deisgn.
   
 ![Screenshot from 2023-09-10 11-17-31](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/152f3807-db53-4cd1-9012-8a26b3679b1d)
+
+We wil briefy go over the various steps and processes.
 
 - *Synthesis*: RTL Converted to gate level netlist using standard cell libraries (SCL). An RTL design is created for a design specification using HDLs like Verilog or VHDL, or it can be created using high-level synthesis tools like SystemC, MATLAB HDL Coder etc.
 
@@ -61,14 +63,15 @@ Now, that we know the tools required, we will look into a simlplied flow from RT
   - *Power Planning* : the power network are connected to reduce the resistance and EM issues.
 
 - *Placement*: Placing cells on floorplan rows aligned with sites
+  - *Global Placement*: for optimal position of cells
+  - *Detailed Placement*: for legal positions
 
-- *Global Placement*: for optimal position of cells
+- *Routing*: The routing stage involves determining the physical interconnections between standard cells, including metal layers and wires. OpenLane uses tools like TritonRoute to create a routed design that adheres to design rule constraints.
 
-- *Detailed Placement*: for legal positions
+- *Signoff*: After placement and routing, OpenLane performs detailed design rule checking (DRC) and final verification to ensure the layout complies with fabrication constraints and meets specified requirements for timing, area, and power.
 
-- *Routing*: Valid patterns for wires
-
-- *Signoff*: Physical (DRC, LVS) and Timing verifications (STA)
+### Open Source ASIC Flow
+With the release of open-source PDK, the whole open-source ASIC flow and methodology has been defined under ***OpenLane*** 
 
 
 </details>
