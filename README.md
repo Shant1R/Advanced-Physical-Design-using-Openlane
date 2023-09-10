@@ -262,8 +262,8 @@ You can clearly see I/O pins, Decap cells and Tap cells. Tap cells are placed in
 
 <details>
 <summary><strong>Library Binding and Placement</strong></summary>
-  
-  
+
+First and foremost, we need to bind the netlist with physical cells. We have shapes for OR, AND and every cell for pratice purpose. But in reality we dont have such shapes, we have give an physical dimensions like rectangles or squares weight and width. This information is given in libs and lefs. Now we place these cells in our design by initilaising it.
   
 </details>
 
