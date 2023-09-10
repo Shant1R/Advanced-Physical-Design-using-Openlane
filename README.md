@@ -165,12 +165,41 @@ run_synthesis
 
 <details>
 <summary><strong>Chip Floor Planning</strong></summary>
-  We will look into two parameters, Utilization factor and Aspect ratio, but before that we must look into the important terms in chip design.
+We will look into two parameters, Utilization factor and Aspect ratio, but before that we must look into the important terms in chip design.
   
   - *Die* : It is a small semiconductor material specimen that houses the core and the fundamental circuit is fabricated over this.
   - *Core* : It is the section of the chip where the fundamental design is placed.
 
-    
+***Utilisation Factor***
+- The ratio of area occupied by the cells in the netlist to the total area of the core
+- Best practice is to set the utilisation factor less than 50% so that there will be space for optimisations, routing, inserting buffers etc.,
+
+***Aspect Ratio***
+- Aspect ratio is the ratio of height to the width of the die.
+- Aspect Ratio of 1 indicates that the die is a square die
+
+These two Parameters are important to derive the width and height of the core and die, and now we can move ahead to define the location of preplaces cells. 
+
+***Pre-placed Cells***
+- Whenever there is a complex logic which is repeated multiple times or a design given by a third-party it can be perceived as abstract black box with input and output ports, clocks etc. We can also create black boxes ourselves for the design in case as per the requirements. They can be IPs or Macros
+- These Macros and IPs are placed in the core at first before placing the standard cells and power planning. These are optimally such that the cells which are more connected to each other are placed nearby and oriented for input and ouputs.
+- Once they have been placed, the location are not altered later on for routing. Thus they have been fixed on the chip.
+- These pre-placed cells have to be surrounded with de-coupling capacitors.
+
+***De-coupling Capacitors***
+- The resistances and capacitances associated with long wire lengths can cause the power supply voltage to drop significantly before reaching the logic circuits. This can lead to the signal value entering into the undefined region, outside the noise margin range.
+- De-coupling capacitors are huge capacitors charged to power supply voltage and placed close the logic circuit. Their role is to decouple the circuit from power supply by supplying the necessary amount of current to the circuit. They pervent crosstalk and enable local communication.
+
+***Power Planning***
+- Each block on the chip, however, cannot have its own decap unlike the pre-placed cells. Thus, when multiple units are discharging, we observe a ground bumb and in case of multiple charing units, we see a voltage droop.
+- When thses are under noise range designed, we won't face any issue, but if they get beyond the defined noise range, we experience undesired behaviour from the design.
+- To fix this issue, we will go for a better power plan for the chip, such that each unit can use the Vdd and Gnd near to it.
+- A common way to accomplish this is to have VDD and VSS pads connected to the horizontal and vertical power and GND lines which form a power mesh.
+
+***Pin Placement***
+- The input, output and Clock pins are placed optimally such that there is less complication in routing or optimised delay.
+- Note - CLK needs least resistive path, as they provide signals to all the flops continuously, thus have bigger IO ports.
+- There are different styles of pin placement in openlane like *random pin placement*, *uniformly spaced* etc.,
   
 </details>
 
