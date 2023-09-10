@@ -165,6 +165,12 @@ run_synthesis
 
 <details>
 <summary><strong>Chip Floor Planning</strong></summary>
+  We will look into two parameters, Utilization factor and Aspect ratio, but before that we must look into the important terms in chip design.
+  
+  - *Die* : It is a small semiconductor material specimen that houses the core and the fundamental circuit is fabricated over this.
+  - *Core* : It is the section of the chip where the fundamental design is placed.
+
+    
   
 </details>
 
