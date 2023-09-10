@@ -115,7 +115,7 @@ With the release of open-source PDK, the whole open-source ASIC flow and methodo
    - OpenROAD approach - In the global route step, the antenna violation is addressed automatically by inserting an antenan diode OpenLane allows the user to chose either of the above approaches
 
 9. ***Routing*** - This step is used to implement the interconnect using the different metal layers specified in the PDK. There are two steps
-    - Global Routing - This is done inside the OpenROAD flow (FastRoute)
+   - Global Routing - This is done inside the OpenROAD flow (FastRoute)
     - Detailed Routing - This is performed using TritonRoute outside the OpenROAD flow after the global routing. Before performing this step the Logic Equivalence Check is performed by Yosys, since OpenROAD does some optimisations the circuit.
 
 10. ***RC Extension*** - From the .def file, the parasitic extraction is done to generate the .spef file (Standard Prasitic Exchange Format) which produces an accurate analog model of the circuit by including the parasitic effects due to wires, parasitic capacitances, etc.,
@@ -129,6 +129,11 @@ With the release of open-source PDK, the whole open-source ASIC flow and methodo
 13. ***GDS II Extraction*** - The routed .def file is used my Magic to generate the GDSII file.
 </details>
 
+<details>
+<summary><strong>Open Source EDA Tools</strong></summary>
+
+  
+</details>
 
 ## DAY 2
 ## DAY 3
