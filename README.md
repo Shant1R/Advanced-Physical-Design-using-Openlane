@@ -72,8 +72,61 @@ We wil briefy go over the various steps and processes.
 
 ### Open Source ASIC Flow
 With the release of open-source PDK, the whole open-source ASIC flow and methodology has been defined under ***OpenLane*** 
+- We will look into the entire OpenLane flow, The flow displayed is much more detailed step wise than the one just overviewed. We will go over them one by one.
+  
+![Screenshot from 2023-09-10 12-30-10](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/62981537-0189-48e2-b70c-e2aaf21e7118)
+
+1. ***Architectural Design*** – A system engineer will provide the VLSI engineer with specifications for the system that are determined through physical constraints. The VLSI engineer will be required to design a circuit that meets these constraints at a microarchitecture modeling level.
+
+2. ***Synthesis*** -  The various steps are under -
+   - *RTL Design/Behavioral Modeling* – RTL design and behavioral modeling are performed with a hardware description language (HDL). EDA tools will use the HDL to perform mapping of higher-level components to the transistor level needed for physical implementation. HDL modeling is normally performed using either Verilog or VHDL. One of two design methods may be employed while creating the HDL of a microarchitecture:
+     - RTL Design – Stands for Register Transfer Level. It provides an abstraction of the digital circuit using
+       i. Combinational logic
+       ii. Registers
+       iii. Modules (IP’s or Soft Macros)
+     - Behavioral Modeling – Allows the microarchitecture modeling to be performed with behavior-based modeling in HDL. This method bridges the gap between C and HDL allowing HDL design to be performed
+       
+   - *RTL Verification* - Behavioral verification of design
+
+   - *Logic Synthesis* – Logic synthesis uses the RTL netlist to perform HDL technology mapping. The synthesis process is normally performed in two major steps:
+
+   - *GTECH Mapping* – Consists of mapping the HDL netlist to generic gates what are used to perform logical optimization based on AIGERs and other topologies created from the generic mapped netlist.
+
+   - *Technology Mapping* – Consists of mapping the post-optimized GTECH netlist to standard cells described in the PDK
+
+   - *Standard Cells* – Standard cells are fixed height and a multiple of unit size width. This width is an integer multiple of the SITE size or the PR boundary. Each standard cell comes with SPICE, HDL, liberty, layout (detailed and abstract) files used by different tools at different stages in the RTL2GDS flow.
+
+   - *Post-Synthesis STA Analysis*: Performs setup analysis on different path groups.
+
+3. ***DFT Insertion*** - Design-for-Test Circuit Insertion
+
+4. ***Floor Planning and Power Planning*** - This is done by OpenROAD flow. The macros and IPs are placed in the core before proceding further. This is called as pre-placement. Floor planning is done separately for the macros and it is called macro floor planning. They are placed in such a way that they are closer to the inputs/outputs/other macros where more connections are present. Then to prevent the loading effects de-coupling capacitors are placed so that the logic states are well within the noise margin.
+   When several blocks tap power from a single source, there is a problem of Voltage Droop at the Vdd and Ground Bounce at the Vss which can again push the logic out of the required noise margin into the undefined state. To mitigate this Vdd and Vss are placed as horizontal and vertical strips in the chip so that the blocks can tap power from the nearest source.
+
+6. ***Placement*** - Place the standard cells on the floorplane rows, aligned with sites defined in the technology lef file. Placement is done in two steps: Global and Detailed.
+   - In Global placement tries to find optimal position for all cells but they may be overlapping and not aligned to rows.
+   - Detailed placement takes the global placement and legalizes all of the placements trying to adhere to what the global placement wants.
 
 
+7. ***Clock Tree Synthesis(CTS)*** - Clock tree synteshsis is used to create the clock distribution network that is used to deliver the clock to all sequential elements. The main goal is to create a network with minimal skew across the chip. H-trees are a common network topology that is used to achieve this goal.
+
+8. ***Fake Antenna and diode swapping*** - Long wires acts as antennas and cause accumulation of charges during the fabrication process damaging the transistor. To avoid this bridging is used to pass the wire through different layers or an antenna diode cell is added to leak away the charges
+   - OpenLane approach - Insert Fake Diode to every cell input during placement. This matches the footprint of the library of the antenna diode. The Antenna Checker is run to check for violations, if there are violations then the fake diode is swapped with a real one.
+   - OpenROAD approach - In the global route step, the antenna violation is addressed automatically by inserting an antenan diode OpenLane allows the user to chose either of the above approaches
+
+9. ***Routing*** - This step is used to implement the interconnect using the different metal layers specified in the PDK. There are two steps
+    - Global Routing - This is done inside the OpenROAD flow (FastRoute)
+    - Detailed Routing - This is performed using TritonRoute outside the OpenROAD flow after the global routing. Before performing this step the Logic Equivalence Check is performed by Yosys, since OpenROAD does some optimisations the circuit.
+
+10. ***RC Extension*** - From the .def file, the parasitic extraction is done to generate the .spef file (Standard Prasitic Exchange Format) which produces an accurate analog model of the circuit by including the parasitic effects due to wires, parasitic capacitances, etc.,
+
+11. ***Static Timing Analysis(STA)*** - At this stage again OpenSTA is used to perform the Static Timing Analysis..
+
+12. ***Sign-off***
+    - *Design Rule Check* (DRC) is performed by Magic
+    - *Layout Versus Schematic* (LVS) is performed by Netgen
+
+13. ***GDS II Extraction*** - The routed .def file is used my Magic to generate the GDSII file.
 </details>
 
 
