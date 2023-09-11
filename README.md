@@ -297,6 +297,47 @@ magic -T ~/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merge
 
 <details>
 <summary><strong>Cell Design anf Characterization Flow</strong></summary>
+
+***Standard cell design flow involves the following***
+
+- *Inputs*:
+  - PDKs
+  - DRC & LVS rules
+  - SPICE models
+  - Libraries
+  - User-defined specifications.
+
+- *Design steps*:
+  - Circuit design
+  - Layout design (Art of layout Euler's path and stick diagram)
+  - Extraction of parasitics
+  - Characterization (timing, noise, power).
+
+- *Outputs*:
+  - CDL (circuit description language)
+  - LEF
+  - GDSII
+  - extracted SPICE netlist (.cir)
+  - timing, noise and power .lib files
+
+***Standard Cell Characterization Flow***
+
+A typical standard cell characterization flow includes the following steps:
+
+1. Read in the models and tech files
+2. Read extracted spice netlist
+3. Recognise behaviour of the cell and buffers
+4. Read the subcircuits
+5. Attach the necessary power sources
+6. Apply stimulus to characterization setup
+7. Provide necessary output capacitive loads
+8. Provide necessary simulation command
+
+Now all 8 steps are provided together as a configuration file to a characterization software called **GUNA**. 
+
+![Screenshot from 2023-09-11 10-44-50](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/0fc3ad3b-fe65-453f-a939-b444c32ba657)
+
+This software generates timing, noise, power models. These .libs are classified as *Timing characterization*, *power characterization* and *noise characterization*.
   
 </details>
 
