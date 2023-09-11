@@ -456,6 +456,9 @@ We will look into the various steps for 16-mask fab procedure
    - We choose an appropriate substrate as per requirement.
    - We go with the most common substrate available - P-type.
 
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/23a3c468-8ab5-4ee7-aa33-284a96f0248f)
+
+
 2. *Creation of Active regions for transistors*
    - We have to make isolation for each pocket, this is done by growing Silicon Dioxide of 40nm over the P-type substrate, then deposit an 80nm layer of Silicon nitride.
    - Now deposit 1micron of photoresist. On this we make Mask1 and Mask 2 for the pockets and shower it with UV lights
@@ -466,9 +469,95 @@ We will look into the various steps for 16-mask fab procedure
    - The remaining nitride layer is etched off.
    - This whole process is called ***LOCOS*** - *Local oxidation of Silicon*
 
-3. *Formation of N-Well and P-Well*
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/952a1716-faf2-4a73-a8fd-d4df283efbe8)
 
+
+3. *Formation of N-Well and P-Well*
+   - The N-well and P-well regions are created separately.
+   - P-well formation involves photolithography and ion implantation of p-type Boron material into the p-substrate. Energy required is 200keV.
+   - N-well is formed similarly with n-type Phosphorus material. Energy requirement is 400keV.
+   - This ion implantation damages the SiO2 layer.
+   - High-temperature furnace processes drive-in diffusion to establish well depths, known as the twin-tub process.
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/84d02f02-ccd2-452e-ae92-da8d84c5438e)
+
+4. *Formation of Gate Terminal*
+   - Gate is the most important terminal as here we control the input voltage.
+   - Important parameters for gate formation include oxide capacitance and doping concentration.
+   - A polysilicon layer is deposited and photolithography techniques are applied to create NMOS and PMOS gates.
+   - The SiO2 layers over Nwell and Pwell are etched off using polysulpuric acid and fresh layer is made with goof thickness.
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/e882aa97-ca64-4869-9b5d-d41ad1b76de1)
+
+5. *Lightly-Doped Drain(LDD) Formation*
+   - This is done to achieve a doping profile --> P+, P-, N for NMOS and N+, N- and P for PMOS.
+   - LDD is created to control hot electron and short channel effects.
+   
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/11e88b98-aaa3-4077-b46b-abff9b3f38c3)
+
+6. *Source and Drain Formation*
+   - Thin oxide layers are added to avoid channel effects during ion implantation.
+   - N+ and P+ implants are performed using Arsenic implantation and high-temperature annealing.
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/9830c896-7a03-47d5-b1be-d1e56ae01f94)
+    
+7. *Local Interconnect Formation*
+   - Thin screen oxide is removed through etching in HF solution.
+   - Titanium deposition through sputtering is initiated.
+   - Heat treatment results in chemical reactions, producing low-resistant titanium silicon dioxide for interconnect contacts and titanium nitride for top-level connections, enabling local communication. 
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/7d491565-933b-43c4-a764-ee8f1945d074)
+
+8. *Higher Level Metal Formation*
+    - To achieve suitable metal interconnects, non-planar surface topography is addressed.
+    - Chemical Mechanical Polishing (CMP) is utilized by doping silicon oxide with Boron or Phosphorus to achieve surface planarization.
+    - TiN and blanket Tungsten layers are deposited and subjected to CMP.
+    - An aluminum (Al) layer is added and subjected to photolithography and CMP.
+    - This constitutes the first level of interconnects, and additional interconnect layers are added to reach higher-level metal layers.
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/28b1cc30-49bc-4b40-bbbf-ad23b29ae14a)
+  
+9. *Dielectric Layer Addition*
+    - Finally, a dielectric layer, typically Si3N4, is applied to safeguard the chip.
+  
+This complex process results in the creation of advanced integrated circuits with multiple layers of interconnects, essential for modern electronic devices.
+
+### *Introduction to SKY130 Basic Layout and LEF*
+
+From Layout, we see the layers which are required for CMOS inverter. Inverter is, PMOS and NMOS connected together.
+
+- Gates of both PMOS and NMOS are connected together and fed to input(here ,A), NMOS source connected to ground(here, VGND), PMOS source is connected to VDD(here, VPWR), Drains of PMOS and NMOS are connected together and fed to output(here, Y).
+- The First layer in skywater130 is localinterconnect layer(locali) , above that metal 1 is purple color and metal 2 is pink color.
+- If we want to see connections between two different parts, place the cursor over that area and press S one times. The tkson window gives the component name.
+
+![Screenshot from 2023-09-11 14-45-36](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/06f1731a-3266-4c8f-9085-e3c376cf8290)
+
+***LEF - Library Exchange File***
+- The layout of a design is defined in a specific file called LEF.
+- It includes design rules (tech LEF) and abstract information about the cells.
+  - *Tech LEF* - Technology LEF file contains information about the Metal layer, Via Definition and DRCs.
+  - *Macro LEF* - Contains physical information of the cell such as its Size, Pin, their direction.
+
+***Designing standard cell*** 
+- First we need to provide bounding box width and height in tkson window. lets say that width of BBOX is 1.38u and height is 2.72u. The command to give these values to MAGIC is ```property Fixed BBOX (0 0 1.32 2.72)```
+- After this, Vdd, GND segments which are in metal 1 layer, their respective contacts and atlast logic gates layout is defined Inorder to know the **logical functioning of the inverter**, we extract the spice and then we do simulation on the spice.
+
+***SPICE extraction in MAGIC***
+
+ To extract it on spice we open TKCON window, the steps are :
+ 
+ - Know the present directory - pwd
+ - create an extration file - the command is ```extract all``` and *sky130_inv.ext* files has been created
+ - create spice file using .ext file to be used with our ngspice tool - the commands are
+   - ```ext2spice cthresh 0 rthresh 0``` - extracts parasatic capcitances also since these are actual layers - nothing is created in the folder
+   - ```ext2spice``` - a file *sky130_inv.spice* has been created.
+
+![Screenshot from 2023-09-11 14-57-15](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/9babe270-cf93-49ef-b06b-4f6ec2b90865)
+
+   
 </details>
+
 
 <details>
 <summary><strong>Lab on SKY130 Tech File</strong></summary>
