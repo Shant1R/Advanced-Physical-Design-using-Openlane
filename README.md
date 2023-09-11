@@ -428,12 +428,29 @@ set ::env(FP_IO_MODE) 2
   -  We will run a transient simulation and plot Vin and VOut with respect to time.
   -  To determine the Rise time, we take the rising input and corresponding falling output and note the time for ```Vdd/2```, ie. 50% of the Vdd.
   -  For fall time, same is repeated but for the falling input and corresponding rising input.
+
+### Steps to GIT CLONE vsdstdcelldesign
+
+- We will git clone a custom made repo for this course in the OpenLane directory of our local system.
+
+```bash
+git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+```
+
+- To invoke magic to view the sky130_inv.mag file, the sky130A.tech file must be included in the command along with its path. To ease up the complexity of this command, the tech file can be copied from the magic folder to the vsdstdcelldesign folder.
+
+- Invertor Layout using Magic
+
+![Screenshot from 2023-09-11 12-41-19](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/c8317c08-1e8c-451a-9bd9-9eb1c710ce24)
+
+
+
     
 </details>
 
 <details>
 <summary><strong>Inception of Layout and CMOS Fabrication Process</strong></summary>
-  
+
 </details>
 
 <details>
