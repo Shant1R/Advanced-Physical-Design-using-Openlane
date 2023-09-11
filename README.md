@@ -382,5 +382,64 @@ Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
 </details>
 
 ## DAY 3 - Design Library Cell using Magic Layout and NGspice Characterization
+
+<details>
+<summary><strong>CMOS Invertor NGspice Lab</strong></summary>
+
+Under this section, we will go in depth of Invertor cell, we would download the .magic file and perform the post layout simulation on NGspice and post characterise the sample cell and plug it in the OpenLane flow. NGspice is an open-source engine used to perform simulations. 
+
+***IO Placer - Revise***
+- PnR is a iterative flow and hence, we can make changes to the environment variables in the fly to observe the changes in our design.
+- now, we want to change my pin configuration along the core from equvi-distance randomly placed to someother placement, we will set that IO mode variable on command prompt as shown 
+```bash
+set ::env(FP_IO_MODE) 2
+```
+
+- Floorplan after chaning the format of IO placement. We can see the pins are now not equi-distant.
+![Screenshot from 2023-09-11 11-40-57](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/abd71a15-f2cc-4394-a4e5-ae75bb6e6989)
+
+
+***Spice Deck Creation***
+- Spice deack is the connectivity information of netlist. Thus it is a netlist that contains component connectivity, inputs to be provided and tap points for taking output and connectivity of the substrate.
+- The source of PMOS is connected to Vdd and Source of NMOS is connected to GND, Vss in this case. Vin is given to the gates and Vout is taken out. We take the Cload as ```10fF``` for now.
+- Now we define the PMOS and NMOS width and length as ```0.375um``` and ```0.25um``` respectively. We give 2.5V as Vdd and Vin. Common Vss is given.
+- Identify the nodes, name them. Nodes are points between which a component is connected.
+- We can now write the spice deck. We also specify the simulation type.
+- We also import the model file for NMOS and PMOS for information of parameters related to transistors
+
+ ![Screenshot from 2023-09-11 12-07-50](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/907f7818-01f2-45f6-a1c6-a7717c97c606)
+
+
+***Spice Simulation***
+- We will run the simulation for the deck created with different widths and lengths for the PMOS and NMOS.
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/0965a8af-23bd-4de8-b330-c6afe17dc156)
+
+- From the waveform, irrespective of switching the shape of it are almost same. We can see the characteristics are maintained across all sizes of CMOS. So CMOS as a circuit is a robust device hence use in designing of logic gates. Parameters that define the robustness of the CMOS are
+
+- ***Switching Threshold (Vm)***
+  - It is the point where out ```Vin = Vout```. To determine, we extend a 45 degree line from the origin.
+  - At this point, both the transistors are in saturation region, means both are turned on and have high chances of current flowing driectly from VDD to Ground called Leakage current.
+  - At this point, ```Vgs = Vds``` and ```Idsn = -Idsp```
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/56f76007-f1c0-4d1b-b288-e04731f8e25e)
+
+- ***Rise and Fall Delay***
+  -  We will run a transient simulation and plot Vin and VOut with respect to time.
+  -  To determine the Rise time, we take the rising input and corresponding falling output and note the time for ```Vdd/2```, ie. 50% of the Vdd.
+  -  For fall time, same is repeated but for the falling input and corresponding rising input.
+    
+</details>
+
+<details>
+<summary><strong>Inception of Layout and CMOS Fabrication Process</strong></summary>
+  
+</details>
+
+<details>
+<summary><strong>Lab on SKY130 Tech File</strong></summary>
+  
+</details>
+
 ## DAY 4 - Pre-layout Timing Analysis and Importance of Good Clock Tree
 ## DAY 5 - Final Step for RTL2GDS using tritonRoute and OpenSTA
