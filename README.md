@@ -443,13 +443,30 @@ git clone https://github.com/nickson-jose/vsdstdcelldesign.git
 
 ![Screenshot from 2023-09-11 12-41-19](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/c8317c08-1e8c-451a-9bd9-9eb1c710ce24)
 
-
-
-    
 </details>
 
 <details>
 <summary><strong>Inception of Layout and CMOS Fabrication Process</strong></summary>
+
+Under this section we will look into the Fabrication process.
+We will look into the various steps for 16-mask fab procedure
+
+***16-MASK CMOS Process***
+1. *Selecting a substrate*
+   - We choose an appropriate substrate as per requirement.
+   - We go with the most common substrate available - P-type.
+
+2. *Creation of Active regions for transistors*
+   - We have to make isolation for each pocket, this is done by growing Silicon Dioxide of 40nm over the P-type substrate, then deposit an 80nm layer of Silicon nitride.
+   - Now deposit 1micron of photoresist. On this we make Mask1 and Mask 2 for the pockets and shower it with UV lights
+   - The photoresist under the masks are protected and remaining is etched away with some chemical reaction. Now the mask is removed.
+   - Now we etch off the extra silicon nitride, thus only silicon nitride left are the ones protected by the photoresist. Now Remove left photoresist.
+   - Now, place the entire thing in oxidation furnace. Silicon nitride protects the SiO2 underneath from growing further.
+   - The growth between the nitride layer acts as the isolation as they don't allow the transistor areas to communicate. This growth is also called bird's beak.
+   - The remaining nitride layer is etched off.
+   - This whole process is called ***LOCOS*** - *Local oxidation of Silicon*
+
+3. *Formation of N-Well and P-Well*
 
 </details>
 
