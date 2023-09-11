@@ -298,6 +298,8 @@ magic -T ~/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merge
 <details>
 <summary><strong>Cell Design anf Characterization Flow</strong></summary>
 
+Under this section, we will go through a thorough insight into the Characterizatiob flow and various steps involved, what are my inputs given, my intermediate outputs and final results we get.
+
 ***Standard cell design flow involves the following***
 
 - *Inputs*:
@@ -343,6 +345,39 @@ This software generates timing, noise, power models. These .libs are classified 
 
 <details>
 <summary><strong>General Timing and Characterization Parameters</strong></summary>
+
+Under this section, we will look into the timing characterization and get an understanding of various semantics and syntax of the three .lib files for noise, power and noise.
+
+First we go through the various ***Timing Parameter Definitions***
+
+Timing defintion | Value
+------------ | -------------
+slew_low_rise_thr  | 20% value
+slew_high_rise_thr |  80% value
+slew_low_fall_thr | 20% value
+slew_high_fall_thr | 80% value
+in_rise_thr | 50% value
+in_fall_thr | 50% value
+out_rise_thr | 50% value
+out_fall_thr | 50% value
+
+***Propagation Delay***
+
+The time difference between when the transitional input reaches 50% of its final value and when the output reaches 50% of its final value. Poor choice of threshold values lead to negative delay values. Even thought you have taken good threshold values, sometimes depending upon how good or bad the slew, the dealy might be still +ve or -ve.
+
+```bash
+Propagation delay = time(out_thr) - time(in_thr)
+```
+
+***Transition Time***
+
+The time it takes the signal to move between states is the transition time , where the time is measured between 10% and 90% or 20% to 80% of the signal levels.
+
+```bash
+Rise transition time = time(slew_high_rise_thr) - time (slew_low_rise_thr)
+
+Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
+```
   
 </details>
 
