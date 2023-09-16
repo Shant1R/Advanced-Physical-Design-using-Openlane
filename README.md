@@ -563,7 +563,51 @@ From Layout, we see the layers which are required for CMOS inverter. Inverter is
 
 <details>
 <summary><strong>Lab on SKY130 Tech File</strong></summary>
-  
+
+Under this section, we will go over how to infer the spice deck file and how to run the transient analysis using NGspice. Once the simulation is done, we will characterise the simulation plot. 
+
+***Spice Deck***
+- The design is scaled to ```0.01u```
+- The NMOS and PMOS are defined as
+  - ```cell_name drain_node gate_node source_node model_file_name```
+ ```bash
+M1000 Y A VGND VGND nshort_model.0 w=35 l=23
+M1001 Y A VPWR VPWR pshort_model.0 w=37 l=23
+ ```
+- We will include the model files for NMOS and PMOS from the ```libs``` directory.
+ ```bash
+  .include ./libs/nshort.lib
+  .include ./libs/pshort.lib
+ ```
+
+- Now, we set up the connections to the nodes with ground, Vdd and input pulses.
+  - VGND to VSS 0V
+  - Supply voltage VPWR to GND.
+  - Sweeping a pulse input.
+- Now we set the transient analysis.
+```bash
+VDD VPWR 0 3.3V
+VSS VGND 0 0V
+Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+.tran 1n 20n
+.control
+run
+.endc
+.end
+```
+- Final Spice deck for simulation.
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/572ba693-3394-4c69-aa60-0623757747ff)
+
+
+***NGpsice Simulation and Characterization***
+
+
+
+***Introdution to Magic and Skywater PDK***
+
+
+
 </details>
 
 ## DAY 4 - Pre-layout Timing Analysis and Importance of Good Clock Tree
