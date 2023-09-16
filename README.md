@@ -602,6 +602,26 @@ run
 
 ***NGpsice Simulation and Characterization***
 
+- Code to run the simulation
+```bash
+ngspice sky130_inv.spice
+```
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/8b3c3414-8ed8-448b-8c93-64a2a97c3add)
+
+
+- To get the plot for output against time with the sweeping input
+```bash
+plot y vs time a
+```
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/fc4e2ed1-4691-491b-9b2a-75cadf0757f5)
+
+- Now we have to characterise the plot.
+- There are four timing parameters used to characterize the inverter standard cell:
+  - *Rise transition* - Time taken for the output to rise from 20% to 80% of max value => ```2.240 - 2.143 = 0.067ns```
+  - *Fall Transition* - Time taken for the output to fall from 80% to 20% of max value => ```4.0921 - 4.049 = 0.0431ns```
+  - *Cell Rise delay* - Difference in time(50% output rise) to time(50% input fall) => ```2.17333 - 2.13 = 0.0433ns```
+  - *Cell Fall delay* - Difference in time(50% output fall) to time(50% input rise) => ```4.076 - 4.0501 = 0.0259ns```
 
 
 ***Introdution to Magic and Skywater PDK***
