@@ -923,7 +923,35 @@ run_placement
 <details>
 
 <summary><strong> Timing Analysis with Ideal Clocks using OpenSTA </strong></summary>
- 
+
+***Set-up Timing Analysis***
+
+- Right now, we will consider the ideal clocks, thus the clock tree are not yet made.
+- We take a single clock and anlysis launch and capture flops.
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/b8c29f1b-0f4c-480e-b5da-7a11b4d862b2)
+
+- In this, we assume that launch flop is triggered at the first posedge of clk and the capture flop recieves the value at the next posedge.
+- Suppose there was some combinational logic between the two, the delay of the logic should be less than the time period of the clock.
+- Thus the clock frequency and time period, and the combinational logic are designed with correspondence to each other.
+- Therefore my setup time for the combinational logic should be less than the time period of the clock.
+
+- Now, we will look into more real and practical conditions.
+- We look into the capture flop. It is made of multiple gates and muxes, which will have there mosfets, resistances and capacitances.
+- Thus will have delay associated to them.  
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/1c0aa597-e7d9-4fd7-b0ae-20ce1bc81a77)
+
+- Suppose the flop was developed with 2 muxes as shown. We have to condsider the delays.
+- This affect the combinational logic delay requirement. Now, the clock period T is not avaiable. The capture flop needs some setup time.
+- Thus the time avaiable for the combinational logic now is T - setupTime of capture flop.
+
+- *Clock Jitter* - clock is generated from PLL which has inbuilt circuit which cells and some logic. There might variations in the clock generation depending upon the ckt. These variations are collectivity known as clock uncertainity. In that jitter is one of the parameter. It is uncertain that clock might come at that exact time withought any deviation.
+- That is why it is called clock_uncertainity Skew, Jitter and Margin comes into clock_uncertainity
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/7f3c072c-14b7-4f30-8748-d8c9e865d2cc)
+
+
+
 </details>
 
 
