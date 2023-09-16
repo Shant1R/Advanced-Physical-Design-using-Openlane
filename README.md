@@ -816,7 +816,24 @@ met5 Y 1.70 3.40
 
 ![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/cdf67c2a-a4c3-4757-9973-07ed07d6388f)
 
- 
+
+***Extraction of LEF file***
+
+- Name the custom cell through tkcon window as ```sky130_shant.mag```.
+- We generate lef file by command:
+```bash
+lef write
+```
+- Upon checking the directory, we can see the lef file being generated.
+
+![Screenshot from 2023-09-16 16-07-00](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/97aa50cf-1fca-4937-a6ea-d4b0aad4ba12)
+
+- lef file generated.
+	
+ ![Screenshot from 2023-09-16 16-25-14](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/80aa72e4-9706-4593-ad9f-f21685cc463a)
+
+
+
 </details>
 
 
