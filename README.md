@@ -743,9 +743,76 @@ During Placement, entire mag information is not necessary. Only the PR boundary,
 
 ***Guidelines for making a standard cell***
 - I/O ports must lie on the intersection on Horizontal and vertical tracks.
-- Width of standard cell is odd mutliples of Horizontal track pitch.
-- Height of standard cell is odd mutliples of Vertical track pitch.
+- Width of standard cell is odd mutliples of Horizontal track pitch or X direction pitch.
+- Height of standard cell is odd mutliples of Vertical track pitch or y direction pitch.
 
+The information regarding the tracks is given in ```/home/shant/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info```
+```bash
+li1 X 0.23 0.46
+li1 Y 0.17 0.34
+met1 X 0.17 0.34
+met1 Y 0.17 0.34
+met2 X 0.23 0.46
+met2 Y 0.23 0.46
+met3 X 0.34 0.68
+met3 Y 0.34 0.68
+met4 X 0.46 0.92
+met4 Y 0.46 0.92
+met5 X 1.70 3.40
+met5 Y 1.70 3.40
+```
+
+- It tells us about all the metal layers as such.
+- We learnt that the input port and output for should be on the intersection of horizontal and vertical tracks, to verify this we set the grids as
+  ``` bash
+  grid 0.46um 0.34um 0.23um 0.17um
+  ```
+- Now we see the layout on Magic again.
+
+![Screenshot from 2023-09-16 15-05-56](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/3e04a9a5-e300-4513-a046-bda40e8e4b88)
+
+- The second condition is also verified. The X-pitch is 0.46 and we can see that the standard cell is 3 times that, thus an odd multiple. 
+- The same can be verified for the height of the standard cell.
+
+***Creation of Ports***
+- Once the layout is ready, the next step is extracting LEF file for the cell.
+- Certain properties and definitions need to be set to the pins of the cell. For LEF files, a cell that contains ports is written as a macro cell, and the ports are the declared as PINs of the macro.
+- Our objective is to extract LEF from a given layout (here of a simple CMOS inverter) in standard format. Defining port and setting correct class and use attributes to each port is the first step.
+
+- Method for definng ports
+  - In Magic Layout window, first source the .mag file for the design (here inverter). Then Edit >> Text which opens up a dialogue box.
+  - For each layer (to be turned into port), make a box on that particular layer and input a label name along with a sticky label of the layer name with which the port needs to be associated. Ensure the Port enable checkbox is checked and default checkbox is unchecked.
+
+
+![Screenshot from 2023-09-16 15-35-46](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/5045cfe3-0a54-4e4c-ab17-a6f24cd9384f)
+
+  - Port A (input port) and port Y (output port) are taken from locali (local interconnect) layer. Also, the number in the textarea near enable checkbox defines the order in which the ports will be written in LEF file (0 being the first).
+  - For power and ground layers, the definition could be same or different than the signal layer. Here, ground and power connectivity are taken from metal1 (Notice the sticky label). 
+ 
+
+***Port Class and Port Use Attributes***
+- After defining ports, the next step is setting port class and port use attributes.
+
+Select port A in magic:
+```bash
+port class input
+port use signal
+```
+Select Y area
+```bash
+port class output
+port use signal
+```
+Select VPWR area
+```bash
+port class inout
+port use power
+```
+Select VGND area
+``bash
+port class inout
+port use ground
+```
 
  
 </details>
