@@ -832,10 +832,20 @@ lef write
 	
  ![Screenshot from 2023-09-16 16-25-14](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/80aa72e4-9706-4593-ad9f-f21685cc463a)
 
+***Including Custom Cell ASIC Design***
+- First, we transfer the lef file generated ```sky130_shant.lef``` into the ```/home/shant/OpenLane/designs/picorv32a/src``` directory.
+- Then we will transfer the ```sky130_fd_sc_hd__fast.lib```, ```sky130_fd_sc_hd__slow.lib``` and ```sky130_fd_sc_hd__typical.lib``` into the same directory.
 
+- Now, we integrate standard cell on **OpenLane** flow after ```make mount```, and follow up
+  ```bash
+  prep -design picorv32a -tag RUN_2023.09.11_06.05.06 -overwrite 
+  set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+  add_lefs -src $lefs
+  run_synthesis
+  ```
 
 </details>
-
+fff  ff
 
 
 <details>
