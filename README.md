@@ -733,6 +733,20 @@ spacing xhrpoly,uhrpoly,xpc allpolynonres 480 touching_illegal \
 <details>
 
 <summary><strong>Timimg Modelling using Delay Models</strong></summary>
+
+***Standard Cell LEF generation***
+
+During Placement, entire mag information is not necessary. Only the PR boundary, I/O ports, Power and ground rails of the cell is required. This information is defined in LEF file. The main objective is to extract lef from the mag file and plug into our design flow.
+
+***Grid into Track***
+- *Track*: A path or a line on which metal layers are drawn for routing. Track is used to define the height of the standard cell.
+
+***Guidelines for making a standard cell***
+- I/O ports must lie on the intersection on Horizontal and vertical tracks.
+- Width of standard cell is odd mutliples of Horizontal track pitch.
+- Height of standard cell is odd mutliples of Vertical track pitch.
+
+
  
 </details>
 
