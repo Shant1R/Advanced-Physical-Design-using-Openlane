@@ -623,9 +623,34 @@ plot y vs time a
   - *Cell Rise delay* - Difference in time(50% output rise) to time(50% input fall) => ```2.17333 - 2.13 = 0.0433ns```
   - *Cell Fall delay* - Difference in time(50% output fall) to time(50% input rise) => ```4.076 - 4.0501 = 0.0259ns```
 
+### *DRC Challenges*
+
+Under this section, we will go over 
+- In-depth overview of Magic's DRC engine
+- Introduction to Google/Skywater DRC rules
+- *Lab* : Warm-up exercise : Fixing a simple rule error
+- *Lab* : Main exercie : Fixing or create a complex error
 
 ***Introdution to Magic and Skywater PDK***
 
+For running the DRC we need to have an understanding of the technology node we are working on. For this one can refer the following
+  - Magic --> [link](http://opencircuitdesign.com/magic/)
+  - Skywater PDK --> [Link](skywater-pdk.readthedocs.io/en/main) 
+  - Github Repo for Skywater PDK --> [github](https://github.com/google/skywater-pdk)
+
+***Lab Setup***
+- Setup to view the layouts
+- For extracting and generating views, Google/skywater repo files were built with Magic
+- Technology file dependency is more for any layout. hence, this file is created first.
+- Since, Pdk is still under development, there are some unfinished tech files and these are packaged for magic along with lab exercise layout and bunch of stuff into the tar ball
+
+```bash
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+```
+
+- Once we have downloaded the archive in the home directory, we extract it to get the lab .mag files
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/d488110d-9956-4ddf-845f-e02e231de84a)
 
 
 </details>
