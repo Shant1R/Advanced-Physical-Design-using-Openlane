@@ -726,11 +726,66 @@ spacing xhrpoly,uhrpoly,xpc allpolynonres 480 touching_illegal \
 
 ![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/6f074a94-f1aa-4b0b-8cd4-ffbbeb6a1a67)
 
-
-
-
-
 </details>
 
 ## DAY 4 - Pre-layout Timing Analysis and Importance of Good Clock Tree
+
+<details>
+
+<summary><strong>Timimg Modelling using Delay Models</strong></summary>
+ 
+</details>
+
+
+
+<details>
+
+<summary><strong> Timing Analysis with Ideal Clocks using OpenSTA </strong></summary>
+ 
+</details>
+
+
+
+<details>
+
+<summary><strong> Clock Tree Synthesis TritonCTS and Signal Integrity </strong></summary>
+ 
+</details>
+
+
+
+<details>
+
+<summary><strong> Timing Analysis with Real Clocks using OpenSTA </strong></summary>
+ 
+</details>
+
+
+
+
+
+
+
 ## DAY 5 - Final Step for RTL2GDS using tritonRoute and OpenSTA
+
+<details>
+
+<summary><strong> Routing and Design Rule Check </strong></summary>
+ 
+</details>
+
+
+<details>
+
+<summary><strong> Power Distribution Network and Routing </strong></summary>
+ 
+</details>
+
+
+<details>
+
+<summary><strong> TritonRoute Feature </strong></summary>
+ 
+</details>
+
+
