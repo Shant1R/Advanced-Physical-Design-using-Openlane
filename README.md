@@ -793,26 +793,26 @@ met5 Y 1.70 3.40
 ***Port Class and Port Use Attributes***
 - After defining ports, the next step is setting port class and port use attributes.
 
-Select port A in magic:
-```bash
-port class input
-port use signal
-```
-Select Y area
-```bash
-port class output
-port use signal
-```
-Select VPWR area
-```bash
-port class inout
-port use power
-```
-Select VGND area
-``bash
-port class inout
-port use ground
-```
+- Select port A in magic:
+  ```bash
+	port class input
+	port use signal
+  ```
+- Select Y area
+  ```bash
+	port class output
+	port use signal
+  ```
+- Select VPWR area
+  ```bash
+  	port class inout
+  	port use power
+  ```
+- Select VGND area
+  ```bash
+	port class inout
+	port use ground
+  ```
 
  
 </details>
