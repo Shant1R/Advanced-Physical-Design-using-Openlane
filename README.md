@@ -687,6 +687,47 @@ cif see VIA2
 - Load the poly.mag
 - Check the drc violation for poly.9
 - Refer the error using skywater pdk design rules
+  - We find that distance between regular polysilicon & poly resistor should be 22um but it is showing 17um and still no errors . We should go to sky130A.tech file and modify as follows to detect this error.
+- In line this
+```bash
+*******************************************************
+spacing npres *nsd 480 touching_illegal \
+	"poly.resistor spacing to N-tap < %d (poly.9)"
+*******************************************************
+```
+ edit as shown.
+```bash
+*******************************************************
+spacing npres allpolynonres 480 touching_illegal \
+	"poly.resistor spacing to N-tap < %d (poly.9)"
+*******************************************************
+```
+
+- Now the second edit. In line this
+
+```bash
+*******************************************************
+spacing xhrpoly,uhrpoly,xpc alldiff 480 touching_illegal \
+	"xhrpoly/uhrpoly resistor spacing to diffusion < %d (poly.9)"
+*******************************************************
+```
+edit as shown.
+```bash
+*******************************************************
+spacing xhrpoly,uhrpoly,xpc allpolynonres 480 touching_illegal \
+	"xhrpoly/uhrpoly resistor spacing to diffusion < %d (poly.9)"
+*******************************************************
+```
+- After this, we ```tech load sky130.tech``` file and execute ```drc check```
+
+![Screenshot from 2023-09-16 14-22-57](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/87605e8a-6860-4ad4-a0fe-7a51b1f7d1d1)
+
+- We can select poly.9 and run ```drc why``` to check for errors. Now it fine.
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/6f074a94-f1aa-4b0b-8cd4-ffbbeb6a1a67)
+
+
+
 
 
 </details>
