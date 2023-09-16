@@ -670,6 +670,7 @@ magic -d XR <file_name>.mag
 ```
 
 - We will open up met3.mag
+![Screenshot from 2023-09-16 12-33-30](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/2512c916-5724-4f59-8d53-eb1cf2a31912)
 
 </details>
 
