@@ -555,6 +555,8 @@ From Layout, we see the layers which are required for CMOS inverter. Inverter is
 
 ![Screenshot from 2023-09-11 14-57-15](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/9babe270-cf93-49ef-b06b-4f6ec2b90865)
 
+
+
    
 </details>
 
