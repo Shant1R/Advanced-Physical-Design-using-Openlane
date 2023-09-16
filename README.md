@@ -652,6 +652,24 @@ wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
 
 ![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/d488110d-9956-4ddf-845f-e02e231de84a)
 
+- There is a hidden file ```.magicrc``` which directs to the various resources for the lab work ahead.
+
+***MAGIC***
+
+- Run Magic.For better graphic use, the command belwo is used:
+```bash
+magic -d XR
+```
+
+- To open a file we can load the file as such -->
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/8dab106c-ae61-4b4b-b034-11060215c712)
+
+- Other way to load it is by defining the name while running magic.
+```bash
+magic -d XR <file_name>.mag
+```
+
+- We will open up met3.mag
 
 </details>
 
