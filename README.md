@@ -635,7 +635,7 @@ Under this section, we will go over
 
 For running the DRC we need to have an understanding of the technology node we are working on. For this one can refer the following
   - Magic --> [link](http://opencircuitdesign.com/magic/)
-  - Skywater PDK --> [Link](skywater-pdk.readthedocs.io/en/main) 
+  - Skywater PDK --> [Link](skywater-pdk.readthedocs.io/en/main) *We will keep this with use during the labs to refer the various DRC rules and Documentations.*
   - Github Repo for Skywater PDK --> [github](https://github.com/google/skywater-pdk)
 
 ***Lab Setup***
@@ -671,6 +671,19 @@ magic -d XR <file_name>.mag
 
 - We will open up met3.mag
 ![Screenshot from 2023-09-16 12-33-30](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/2512c916-5724-4f59-8d53-eb1cf2a31912)
+
+- We see multiple independent example metal layouts with some DRC errors. We can refer these errors in the the Skywater PDK design rules which are flageed in the DRC engine. \
+- We can make a frame around a metal region and in command window write ```drc why``` --> this gives us the DRC violated.
+
+![Screenshot from 2023-09-16 12-48-36](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/f5b6034a-ceb4-4f92-9817-6ff508245e41)
+
+- Magic uses a lot of derived layers. To see these layers we can make a large box area and use following commands to see metal cut
+
+```bash
+cif see VIA2
+```
+
+
 
 </details>
 
