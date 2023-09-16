@@ -795,24 +795,26 @@ met5 Y 1.70 3.40
 
 - Select port A in magic:
   ```bash
-	port class input
-	port use signal
+  port class input
+  port use signal
   ```
 - Select Y area
   ```bash
-	port class output
-	port use signal
+  port class output
+  port use signal
   ```
 - Select VPWR area
   ```bash
-  	port class inout
-  	port use power
+  port class inout
+  port use power
   ```
 - Select VGND area
   ```bash
-	port class inout
-	port use ground
+  port class inout
+  port use ground
   ```
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/cdf67c2a-a4c3-4757-9973-07ed07d6388f)
 
  
 </details>
