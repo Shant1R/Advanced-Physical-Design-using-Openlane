@@ -1061,6 +1061,29 @@ run_cts
 
 ***LAB Continued***
 
+```bash
+openroad
+read_lef /home/shant/OpenLane/designs/picorv32a/runs/RUN_2023.09.11_06.05.06/tmp/merged.nom.lef 
+read_def /home/shant/OpenLane/designs/picorv32a/runs/RUN_2023.09.11_06.05.06/results/cts/picorv32.def 
+read_verilog /home/shant/OpenLane/designs/picorv32a/runs/RUN_2023.09.11_06.05.06/results/synthesis/picorv32.v
+write_db pico_cts.db
+read_db pico_cts.db
+read_verilog /home/shant/OpenLane/designs/picorv32a/runs/RUN_2023.09.11_06.05.06/results/synthesis/picorv32.v
+link_design picorv32
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+read_sdc /home/shant/OpenLane/designs/picorv32a/src/my_base.sdc
+set_propagated_clock (all_clocks)
+report_checks -path_delay min_max -format full_clock_expanded -digits 4
+```
+
+- Since, clock is propagated, from this stage, we do timing analysis with real clocks. From now post cts analysis is performed by operoad within the openlane flow
+
+- *Hold Slack*
+![Screenshot from 2023-09-17 15-10-18](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/1160b453-ec66-4c12-81fc-f4c347763730)
+
+- *Setup Slack*
+![Screenshot from 2023-09-17 15-09-40](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/1efc9a1c-542c-49d5-ade2-90e61d1aba2a)
+
 
  
 </details>
