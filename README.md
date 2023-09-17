@@ -839,33 +839,25 @@ lef write
 - For this, we edit the config.json file as below
 ```bash
 {
-    "DESIGN_NAME": "picorv32",
-    "VERILOG_FILES": "dir::src/picorv32a.v",
-    "CLOCK_PORT": "clk",
-    "CLOCK_NET": "clk",
-    "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
-    "RUN_HEURISTIC_DIODE_INSERTION": true,
-    "DIODE_ON_PORTS": "in",
-    "GPL_CELL_PADDING": 2,
-    "DPL_CELL_PADDING": 2,
-    "CLOCK_PERIOD": 24,
+  "DESIGN_NAME": "picorv32",
+  "VERILOG_FILES": "dir::src/picorv32a.v",
+  "CLOCK_PORT": "clk",
+  "CLOCK_NET": "clk",
+  "FP_SIZING": "relative",
+  "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
+  "LIB_SYNTH" : "dir::src/sky130_fd_sc_hd__typical.lib",
+  "LIB_FASTEST" : "dir::src/sky130_fd_sc_hd__fast.lib",
+  "LIB_SLOWEST" : "dir::src/sky130_fd_sc_hd__slow.lib",
+  "LIB_TYPICAL":"dir::src/sky130_fd_sc_hd__typical.lib",
+  "TEST_EXTERNAL_GLOB":"dir::/src/*",
+  "SYNTH_DRIVING_CELL":"sky130_vsdinv",
+  "pdk::sky130*": {
     "FP_CORE_UTIL": 35,
-    "PL_RANDOM_GLB_PLACEMENT": 1,
-    "PL_TARGET_DENSITY": 0.5,
-    "FP_SIZING": "relative",
-    "LIB_SYNTH":"dir::src/sky130_fd_sc_hd__typical.lib",
-    "LIB_FASTEST":"dir::src/sky130_fd_sc_hd__fast.lib",
-    "LIB_SLOWEST":"dir::src/sky130_fd_sc_hd__slow.lib",
-    "LIB_TYPICAL":"dir::src/sky130_fd_sc_hd__typical.lib",
-    "TEST_EXTERNAL_GLOB":"dir::/src/*",
-    "SYNTH_DRIVING_CELL":"sky130_vsdinv",
-    "MAX_FANOUT_CONSTRAINT": 4,
-    "pdk::sky130*": {
-        "MAX_FANOUT_CONSTRAINT": 6,
-        "scl::sky130_fd_sc_ms": {
-            "FP_CORE_UTIL": 30
-        }
+    "CLOCK_PERIOD": 24,
+    "scl::sky130_fd_sc_hd": {
+      "FP_CORE_UTIL": 30
     }
+  }
 }
 ```
 
