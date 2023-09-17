@@ -1163,8 +1163,72 @@ gen_pdn
 
 <details>
 
-<summary><strong> TritonRoute Feature </strong></summary>
- 
+<summary><strong> Routing </strong></summary>
+
+In the realm of routing within Electronic Design Automation (EDA) tools, such as both OpenLANE and commercial EDA tools, the routing process is exceptionally intricate due to the vast design space. To simplify this complexity, the routing procedure is typically divided into two distinct stages: Global Routing and Detailed Routing.
+
+- The two routing engines responsible for handling these two stages are as follows:
+  - *Global Routing:*
+
+    In this stage, the routing region is subdivided into rectangular grid cells and represented as a coarse 3D routing graph. This task is accomplished by the "FASTE ROUTE" engine.
+  - *Detailed Routing:*
+
+     Here, finer grid granularity and routing guides are employed to implement the physical wiring. The "tritonRoute" engine comes into play at this stage. "Fast Route" generates initial routing guides, while "Triton Route" utilizes the Global Route information and further refines the routing, employing various strategies and optimizations to determine the most optimal path for connecting the pins.
+
+
+***Key Features of TritonRoute***
+- *Initial Detail Routing*:
+
+  TritonRoute initiates the detailed routing process, providing the foundation for the subsequent routing steps.
+
+- *Adherence to Pre-Processed Route Guides*:
+
+  TritonRoute places significant emphasis on following pre-processed route guides. This involves several actions:
+
+- *Initial Route Guide Analysis*:
+
+  TritonRoute analyzes the directions specified in the preferred route guides. If any non-directional routing guides are identified, it breaks them down into unit widths.
+
+- *Guide Splitting:*
+
+  In cases where non-directional routing guides are encountered, TritonRoute divides them into unit widths to facilitate routing.
+
+- *Guide Merging:*
+
+  TritonRoute merges guides that are orthogonal (touching guides) to the preferred guides, streamlining the routing process.
+
+- *Guide Bridging:*
+
+  When it encounters guides that run parallel to the preferred routing guides, TritonRoute employs an additional layer to bridge them, ensuring efficient routing within the preprocessed guides.
+
+Assumes route guide for each net satisfy inter guide connectivity Same metal layer with touching guides or neighbouring metal layers with nonzero vertically overlapped area( via are placed ).each unconnected termial i.e., pin of a standard cell instance should have its pin shape overlapped by a routing guide( a black dot(pin) with purple box(metal1 layer))
+
+### TritonRoute problem statement
+```bash
+Inputs : LEF, DEF, Preprocessed route guides
+Output : Detailed routing solution with optimized wire length and via count
+Constraints : Route guide honoring, connectivity constraints and design rules.
+```
+
+The space where the detailed route takes place has been defined. Now TritonRoute handles the connectivity in two ways.
+
+- *Access Point(AP)* : An on-grid point on the metal of the route guide, and is used to connect to lower-layer segments, pins or IO ports,upper-layer segments. Access Point Cluster(APC) : A union of all the Aps derived from same lower-layer segment, a pin or an IO port, upper-layer guide.
+
+***TritonRoute run for routing***
+
+Make sure the CURRENT_DEF is set to pdn.def
+
+- Start routing by using
+
+```bash
+run_routing
+```
+
+The options for routing can be set in the config.tcl file. The optimisations in routing can also be done by specifying the routing strategy to use different version of TritonRoute Engine. There is a trade0ff between the optimised route and the runtime for routing.
+
+For the default setting picorv32a takes approximately 30 minutes according to the current version of TritonRoute.
+
+
 </details>
 
 
