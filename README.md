@@ -1099,6 +1099,26 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 <details>
 
 <summary><strong> Routing and Design Rule Check </strong></summary>
+
+***Maze Routing and Lee's Algorithm***
+- Routing is the process of establishing a physical connection between two pins. Algorithms designed for routing take source and target pins and aim to find the most efficient path between them, ensuring a valid connection exists.
+- The Maze Routing algorithm, such as the Lee algorithm, is one approach for solving routing problems.Here a grid similar to the one created during cell customization is utilized for routing purposes.
+- The Lee algorithm starts with two designated points, the source and target, and leverages the routing grid to identify the shortest or optimal route between them.
+
+- Lee's Algorithm has its limitations. It can be time consuming when dealing with millions of pins.It essentially constructs a maze and then numbers its cells from the source to the target. here are alternative algorithms that address similar routing challenges.
+
+- Here in this case he shortest path is one that follows a steady increment of one.There might be multiple paths, but the best path that the tool will choose is one with less bends.The route should not be diagonal and must not overlap an obstruction such as macros. The Lee algorithm prioritizes selecting the best path, typically favoring L-shaped routes over zigzags. If no L-shaped paths are available, it may resort to zigzag routes. This approach is particularly valuable for global routing tasks.
+
+- This algorithm however has high run time and consume a lot of memory thus more optimized routing algorithm is preferred .
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/5e50c695-e368-4106-ac56-478b4153773d)
+
+***Design Rule Check***
+- Design rule checks are physical checks of metal width, pitch and spacing requirement for the different layers which depend on different technology nodes.It verifies whether a design meets the predefined process technology rules given by the foundry for its manufacturing.
+
+- The layout of a design must be in accordance with a set of predefined technology rules given by the foundry for manufacturability. After completion of the layout and its physical connection, an automatic program will check each and every polygon in the design against these design rules and report any violations.
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/b7282031-7657-43cb-8f20-fa9453a5ec57)
  
 </details>
 
@@ -1106,7 +1126,38 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 <details>
 
 <summary><strong> Power Distribution Network and Routing </strong></summary>
- 
+
+- Unlike the general ASIC flow, Power Distribution Network generation is not a part of floorplan run in OpenLANE. PDN must be generated after CTS and post-CTS STA analyses:
+- We can check whether PDN has been created or no by check the current def environment variable:  ``` echo $::env(CURRENT_DEF) ```
+
+```bash
+gen_pdn
+```
+
+![Screenshot from 2023-09-17 15-35-38](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/05c46f44-4ff4-410c-99be-d45f0a92fcf7)
+
+- log file generated
+
+![Screenshot from 2023-09-17 15-38-59](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/791fa081-2d0b-4a61-b155-afe7cac9e35a)
+
+- gen_pdn Generates the power distribution network.
+
+- The power distribution network has to take the design_cts.def as the input def file.
+
+- Power rings,strapes and rails are created by PDN.
+
+- From VDD and VSS pads, power is drawn to power rings.
+
+- Next, the horizontal and vertical strapes connected to rings draw the power from strapes.
+
+- Stapes are connected to rings and these rings are connected to std cells. So, standard cells get power from rails.
+
+- Here are definitions for the straps and the rails. In this design, straps are at metal layer 4 and 5 and the standard cell rails are at the metal layer 1. Vias connect accross the layers as required.
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/46790b86-9fde-4c1d-aabd-a49b5366f4d4)
+
+
+
 </details>
 
 
