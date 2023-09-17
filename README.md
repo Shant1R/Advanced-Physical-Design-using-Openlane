@@ -950,7 +950,27 @@ run_placement
 
 ![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/7f3c072c-14b7-4f30-8748-d8c9e865d2cc)
 
+***Post-Synthesis Analysis using OpenSTA***
 
+Timing analysis is carried out outside the OpenLANE flow using OpenSTA tool. For this, pre_sta.conf is required to carry out the STA analysis. Invoke OpenSTA outside the openLANE flow as follows:
+
+```bash
+sta pre_sta.conf
+```
+
+Since clock tree synthesis has not been performed yet, the analysis is with respect to ideal clocks and only setup time slack is taken into consideration. The slack value is the difference between data required time and data arrival time. The worst slack value must be greater than or equal to zero. If a negative slack is obtained, following steps may be followed:
+
+- Change synthesis strategy, synthesis buffering and synthesis sizing values
+- Review maximum fanout of cells and replace cells with high fanout
+- sdc file for OpenSTA is modified.
+
+base.sdc is located in ```vsdstdcelldesigns/extras``` directory. So, we copy it into our design folder using ```cp my_base.sdc /home/emil/OpenLane/designs/picorv32a/src/```
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/d2ffb39b-5aee-4ba8-9972-80952d43ceab)
+
+Since there were no timing violations, we can skip this step. 
+
+Since clock is propagated only once we do CTS, *In placement stage, clock is considered to be ideal.* So only setup slack is taken into consideration before CTS.
 
 </details>
 
