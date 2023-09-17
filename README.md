@@ -1236,4 +1236,22 @@ magic -T ~/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merge
 
 </details>
 
+## Word of Thanks
+I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
+
+## Acknowledgement
+- Kunal Ghosh, VSD Corp. Pvt. Ltd.
+- ChatGPT
+- Alwin Shaju, Colleague, IIITB
+- Emil J. Lal , Colleague, IIITB
+- Sampath N, Colleague, IIITB
+  
+## Reference 
+- https://www.vsdiat.com
+- https://github.com/KanishR1
+- http://opencircuitdesign.com/magic
+- skywater-pdk.readthedocs.io/en/main
+- https://github.com/google/skywater-pdk
+
+
 
