@@ -914,7 +914,8 @@ run_placement
 
 - Now, we check for legality &To check the layout invoke magic from the ```results/placement``` directory
 
-![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/13ec391f-d48f-4442-af06-aa85959fc795)
+
+![Screenshot from 2023-09-17 16-27-03](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/2bf77a6a-39bd-4a71-b597-13bbec81ac1d)
 
 
  
@@ -1223,10 +1224,22 @@ Make sure the CURRENT_DEF is set to pdn.def
 ```bash
 run_routing
 ```
+![Screenshot from 2023-09-17 16-51-37](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/740bd3c9-e103-4d8b-a646-ee524d2275a5)
 
-The options for routing can be set in the config.tcl file. The optimisations in routing can also be done by specifying the routing strategy to use different version of TritonRoute Engine. There is a trade0ff between the optimised route and the runtime for routing.
+- Log file
+![Screenshot from 2023-09-17 16-54-35](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/4bbff2fc-76e0-4189-9ba2-1132cc9a2acb)
 
-For the default setting picorv32a takes approximately 30 minutes according to the current version of TritonRoute.
+
+***Layout in magic tool post routing***
+
+- The design can be viewed on magic within results/routing directory. Run the follwing command in that directory: 
+
+```bash
+magic -T ~/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32.def &
+```
+![Screenshot from 2023-09-17 17-01-15](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/a99c212b-98d8-4a34-9be8-efe892d3f421)
+
+![Screenshot from 2023-09-17 16-59-55](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/16b229dc-fdd9-4abd-95eb-231c8e2522c7)
 
 
 </details>
