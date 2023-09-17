@@ -1057,6 +1057,10 @@ run_cts
 - It concerns the minimum duration during which a data input (D) needs to maintain its stability and validity after the clock edge before any changes can occur.
 - Ensuring that hold time requirements are met is essential to prevent data corruption and ensure the proper operation of digital circuits.
 
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/7a6c57f6-5307-4aea-9324-626f6c665268)
+
+***LAB Continued***
+
 
  
 </details>
