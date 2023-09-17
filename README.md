@@ -1250,7 +1250,7 @@ I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to com
 - https://www.vsdiat.com
 - https://github.com/KanishR1
 - http://opencircuitdesign.com/magic
-- skywater-pdk.readthedocs.io/en/main
+- http://skywater-pdk.readthedocs.io/en/main
 - https://github.com/google/skywater-pdk
 
 
