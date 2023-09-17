@@ -1020,6 +1020,14 @@ We will continue after the synthesis, floorplan and placement. We run the CTS as
 ```bash
 run_cts
 ```
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/12044892-426c-4c30-ba0f-405e2a7ec5a7)
+
+- Now, we verify the setup and hold time
+
+![image](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/3adae859-7f27-4c68-a170-2b60bfce8b82)
+
+- We note the setup slack as ``` 13.31 ``` and hold slack as ``` 0.35 ```. Therefore, we are not in violation for timing constrints. 
  
 </details>
 
