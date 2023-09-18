@@ -906,6 +906,9 @@ run_placement
 
 - Now, we check for legality &To check the layout invoke magic from the ```results/placement``` directory
 
+![Screenshot from 2023-09-18 14-53-59](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/9fa0d843-3a9e-4d8d-8b1b-27687ec03f03)
+
+- The cell manager shows that the custom cell ```sky130_shant``` has been instantiated. We try to located the cell view now. 
 
 ![Screenshot from 2023-09-17 16-27-03](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/2bf77a6a-39bd-4a71-b597-13bbec81ac1d)
 
