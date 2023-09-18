@@ -1222,6 +1222,7 @@ run_routing
 ![Screenshot from 2023-09-17 16-51-37](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/740bd3c9-e103-4d8b-a646-ee524d2275a5)
 
 - Log file
+
 ![Screenshot from 2023-09-17 16-54-35](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/4bbff2fc-76e0-4189-9ba2-1132cc9a2acb)
 
 
@@ -1233,6 +1234,12 @@ run_routing
 magic -T ~/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32.def &
 ```
 ![Screenshot from 2023-09-17 17-01-15](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/a99c212b-98d8-4a34-9be8-efe892d3f421)
+
+- We can see the custom cell ```sky130_shant``` being instantiated in the routed layout.
+
+![Screenshot from 2023-09-18 15-26-01](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/8cfdf7df-1ffb-4c55-b119-72cafef60c28)
+
+- Now, we try to locate the cell view on the populated layout.
 
 ![Screenshot from 2023-09-18 10-20-28](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/e0a598be-aa86-450b-8a63-42583523d9c6)
 
