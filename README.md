@@ -1231,8 +1231,7 @@ magic -T ~/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merge
 ```
 ![Screenshot from 2023-09-17 17-01-15](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/a99c212b-98d8-4a34-9be8-efe892d3f421)
 
-![Screenshot from 2023-09-17 16-59-55](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/16b229dc-fdd9-4abd-95eb-231c8e2522c7)
-
+![Screenshot from 2023-09-18 10-20-28](https://github.com/Shant1R/Advanced-Physical-Design-using-Openlane/assets/59409568/e0a598be-aa86-450b-8a63-42583523d9c6)
 
 </details>
 
